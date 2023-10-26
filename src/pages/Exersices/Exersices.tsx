@@ -1,6 +1,6 @@
 const Exersices = () => {
     return (
-        <div>Silvio Santos</div>
+        <div>Santos</div>
     )
 }
 

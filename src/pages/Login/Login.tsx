@@ -1,6 +1,6 @@
 const Login = () => {
     return (
-        <div>Silvio Santos</div>
+        <div>Camavinga</div>
     )
 }
 
