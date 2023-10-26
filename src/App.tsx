@@ -1,4 +1,4 @@
-import './App.css'
+
 //import * as ReactDom from 'react-dom/client'
 import Register from './pages/Register/Register';
 

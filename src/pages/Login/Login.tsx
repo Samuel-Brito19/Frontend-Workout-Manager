@@ -1,6 +1,15 @@
+import * as Styled from './styles'
+
 const Login = () => {
     return (
-        <div>Camavinga</div>
+        <Styled.Container>
+            <h2>LOGIN</h2>
+            <Styled.Form>
+                <Styled.Input type='email' placeholder='Enter email'/>
+                <Styled.Input type='email' placeholder='Enter email'/>
+                <Styled.Button>ENTER</Styled.Button>
+            </Styled.Form>
+        </Styled.Container>
     )
 }
 
