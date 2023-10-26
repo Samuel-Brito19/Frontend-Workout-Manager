@@ -10,7 +10,7 @@ const Login = () => {
                 <Styled.Input type='email' placeholder='Enter email'/>
                 <Styled.Button>ENTER</Styled.Button>
             </Styled.Form>
-            <Styled.Span>Don't you have an account? <Link to="/register">Register</Link></Styled.Span>
+            <Styled.Span>Don't have an account yet? <Link to="/register">Register</Link></Styled.Span>
         </Styled.Container>
     )
 }
