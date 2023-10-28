@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import * as Styled from './styles'
 import { useState } from 'react'
-import axios from 'axios'
 
 const Register = () => {
 
@@ -17,13 +16,13 @@ const Register = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        try {
-            const res = await axios.post('/register', inputs)
-            console.log(res)
+        // try {
+        //     const res = await axios.post('/register', inputs)
+        //     console.log(res)
     
-        } catch (error) {
-            console.log(error)
-        }
+        // } catch (error) {
+        //     console.log(error)
+        // }
     }
 
     console.log(inputs)

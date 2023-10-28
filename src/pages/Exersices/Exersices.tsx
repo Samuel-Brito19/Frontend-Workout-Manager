@@ -1,6 +1,19 @@
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/ReactToastify.css'
+import * as Styled from './styles'
+import GlobalStyle from "../../styles/global"
+
 const Exersices = () => {
     return (
-        <div>Santos</div>
+
+        <>
+            <Styled.Container>
+
+            </Styled.Container>
+
+            <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
+            <GlobalStyle/>
+        </>
     )
 }
 
