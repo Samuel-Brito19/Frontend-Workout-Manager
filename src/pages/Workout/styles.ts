@@ -31,3 +31,12 @@ export const Button = styled.button`
   width: 100px;
   align-items: start;
 `;
+
+export const Td = styled.td`
+  //padding-top: 15px;
+  display: flex;
+  text-align: end;
+  justify-content: space-between;
+  padding-left: 300px;
+  cursor: pointer;
+`
