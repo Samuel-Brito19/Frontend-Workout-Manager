@@ -8,13 +8,19 @@ const Workout = () => {
         <>
             <Styled.Title>Workouts</Styled.Title>
             <Styled.Button>+</Styled.Button>
-            <Styled.Container>Chest 
+            <Styled.Container> 
+                <Styled.Span>Chest</Styled.Span>
+                <Styled.DivContainer>
                 <Styled.Td>
-                <FaTrash/>
-                <FaEdit/>
+                    <FaTrash/>
                 </Styled.Td>
+                <Styled.Td>
+                    <FaEdit/>
+                </Styled.Td>
+                </Styled.DivContainer>
+                
+                
             </Styled.Container>
-            
             <GlobalStyle/>
         </>
     )
