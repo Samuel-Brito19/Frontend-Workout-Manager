@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import * as Styled from "./styles";
 import { useState } from "react";
+import api from "../../services/api";
+import { AxiosError } from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -8,9 +10,24 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    navigate("/workouts");
+
+    try {
+      await api.post("/auth", {
+        email,
+        password,
+      });
+
+      navigate("/workouts");
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data.error);
+        return;
+      }
+
+      alert("Something went wrong, please try again.");
+    }
   };
 
   return (
