@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Styled from "./styles";
 import { useState } from "react";
 import api from "../../services/api";
+import * as storage from "../../services/storage";
 import { AxiosError } from "axios";
 
 const Login = () => {
@@ -14,10 +15,13 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      await api.post("/auth", {
+      const response = await api.post("/a´uth", {
         email,
         password,
       });
+
+      const { token, user } = response.data;
+      storage.saveForLogin(token, user);
 
       navigate("/workouts");
     } catch (error) {
