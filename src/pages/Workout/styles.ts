@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
   display: flex;
   gap: 10px;
@@ -15,10 +14,10 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-display: flex;
-justify-content: center;
-margin-bottom: 30px;
-`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+`;
 
 export const Button = styled.button`
   padding: 10px;
@@ -32,7 +31,7 @@ export const Button = styled.button`
   align-items: start;
 `;
 
-export const Td = styled.td`
+export const Line = styled.div`
   //padding-top: 15px;
   display: block;
   text-align: start;
@@ -41,11 +40,9 @@ export const Td = styled.td`
   float: right;
   //padding-left: 300px;
   cursor: pointer;
-  content: '';
+  content: "";
   padding-left: 10px;
-`
-export const DivContainer = styled.div`
-`
+`;
+export const DivContainer = styled.div``;
 
-export const Span = styled.span`
-`
+export const Span = styled.span``;

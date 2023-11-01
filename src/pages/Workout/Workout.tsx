@@ -11,12 +11,12 @@ const Workouts = () => {
       <Styled.Container>
         <Styled.Span>Chest</Styled.Span>
         <Styled.DivContainer>
-          <Styled.Td>
+          <Styled.Line>
             <FaTrash />
-          </Styled.Td>
-          <Styled.Td>
+          </Styled.Line>
+          <Styled.Line>
             <FaEdit />
-          </Styled.Td>
+          </Styled.Line>
         </Styled.DivContainer>
       </Styled.Container>
       <GlobalStyle />
