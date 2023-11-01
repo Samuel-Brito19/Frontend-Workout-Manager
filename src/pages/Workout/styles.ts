@@ -1,15 +1,18 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   gap: 10px;
+  height: 60px;
   background-color: #fff;
-  padding: 20px;
+  padding: 0 20px;
   margin-top: 30px;
   box-shadow: 0px 0px 5px #ccc;
   border-radius: 5px;
   width: 400px;
   margin-left: auto;
+  align-items: center;
   justify-content: space-between;
 `;
 
@@ -45,4 +48,15 @@ export const Line = styled.div`
 `;
 export const DivContainer = styled.div``;
 
-export const Span = styled.span``;
+export const WorkoutTitle = styled(Link)`
+  flex: 1;
+  height: 100%;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: #2c73d2;
+  }
+`;

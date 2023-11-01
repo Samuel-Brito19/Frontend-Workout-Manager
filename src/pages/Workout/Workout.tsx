@@ -9,7 +9,9 @@ const Workouts = () => {
       <Styled.Title>Workouts</Styled.Title>
       <Styled.Button>+</Styled.Button>
       <Styled.Container>
-        <Styled.Span>Chest</Styled.Span>
+        <Styled.WorkoutTitle to="/workouts/3/exercises">
+          Chest
+        </Styled.WorkoutTitle>
         <Styled.DivContainer>
           <Styled.Line>
             <FaTrash />
