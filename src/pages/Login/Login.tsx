@@ -15,7 +15,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await api.post("/a´uth", {
+      const response = await api.post("/auth", {
         email,
         password,
       });
