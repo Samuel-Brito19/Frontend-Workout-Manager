@@ -3,7 +3,7 @@ import Register from "./pages/Register/Register";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import Workout from "./pages/Workout/Workout";
+import Workouts from "./pages/Workout/Workout";
 import Exercises from "./pages/Exercises/Exercises";
 
 function App() {
@@ -17,11 +17,11 @@ function App() {
       element: <Register />,
     },
     {
-      path: "/workout",
-      element: <Workout />,
+      path: "/workouts",
+      element: <Workouts />,
     },
     {
-      path: "/exercises",
+      path: "/workouts/:workoutId/exercises",
       element: <Exercises />,
     },
   ]);
