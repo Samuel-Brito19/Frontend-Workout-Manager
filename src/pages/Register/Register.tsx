@@ -30,11 +30,18 @@ const Register = () => {
             console.log(inputs)
             
             if(inputs.password !== inputs.passwordConf) {
-                alert('password does not match!!')
+                alert('Password does not match!!')
+                setInputs(
+                    {name: '',
+                    email: '',
+                    password: '',
+                    passwordConf: ''})
+                
                 return
             }
             
             navigate("/")
+
 
         } catch (error) {
             if (error instanceof AxiosError) {
@@ -49,10 +56,10 @@ const Register = () => {
         <Styled.Container>
         <h2>Register</h2>
         <Styled.Form>
-            <Styled.Input required type='text' placeholder='Username' name='name' onChange={handleChange}/>
-            <Styled.Input required type='email' placeholder='Enter email' name='email' onChange={handleChange}/>
-            <Styled.Input required type='password' placeholder='Enter password' name='password' onChange={handleChange}/>
-            <Styled.Input required type='password' placeholder='Confirm password' name='passwordConf' onChange={handleChange}/>
+            <Styled.Input required type='text' placeholder='Username' name='name' value={inputs.name} onChange={handleChange}/>
+            <Styled.Input required type='email' placeholder='Enter email' name='email' value={inputs.email} onChange={handleChange}/>
+            <Styled.Input required type='password' placeholder='Enter password' name='password' value={inputs.password} onChange={handleChange}/>
+            <Styled.Input required type='password' placeholder='Confirm password' name='passwordConf' value={inputs.passwordConf} onChange={handleChange}/>
             <Styled.LabelError></Styled.LabelError>
             <Styled.Button onClick={handleSubmit}>REGISTER</Styled.Button>
             <Styled.Span>Already have an account? <Link to="/">Login</Link></Styled.Span>
