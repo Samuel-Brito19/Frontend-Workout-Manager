@@ -3,7 +3,7 @@ import Register from './pages/Register/Register'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/Login/Login'
-import Workouts from './pages/Workout/Workout'
+import Workouts from './pages/Workouts/Workouts'
 import Exercises from './pages/Exercises/Exercises'
 
 function App () {

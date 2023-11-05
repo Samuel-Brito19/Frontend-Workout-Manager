@@ -14,5 +14,5 @@ export function getToken () {
 
 export function getUser () {
   const user = localStorage.getItem(USER_KEY)
-  return user ? (JSON.parse(user) as User) : null
+  return user !== null ? (JSON.parse(user) as User) : null
 }
