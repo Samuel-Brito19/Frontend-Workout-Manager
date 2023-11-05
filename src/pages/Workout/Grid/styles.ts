@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Table = styled.table`
   width: 100%;
@@ -9,23 +9,23 @@ export const Table = styled.table`
   max-width: 1120px;
   margin: 20px auto;
   word-break: break-all;
-`;
+`
 
 export const Td = styled.td`
   padding-top: 15px;
-  text-align: ${(props) => (props.alignCenter ? "center" : "start")};
-  width: ${(props) => (props.width ? props.width : "auto")};
+  text-align: ${(props) => (props.alignCenter ? 'center' : 'start')};
+  width: ${(props) => (props.width ? props.width : 'auto')};
 
   @media (max-width: 500px) {
-    ${(props) => props.onlyWeb && "display: none"}
+    ${(props) => props.onlyWeb && 'display: none'}
   }
-`;
+`
 
-export const Thead = styled.thead``;
+export const Thead = styled.thead``
 
-export const Tbody = styled.tbody``;
+export const Tbody = styled.tbody``
 
-export const Tr = styled.tr``;
+export const Tr = styled.tr``
 
 export const Th = styled.th`
   text-align: start;
@@ -33,6 +33,6 @@ export const Th = styled.th`
   padding-bottom: 5px;
 
   @media (max-width: 500px) {
-    ${(props) => props.onlyWeb && "display: none"}
+    ${(props) => props.onlyWeb && 'display: none'}
   }
-`;
+`

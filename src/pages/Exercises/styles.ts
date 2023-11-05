@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   font-family: "poppins", sans-serif;
@@ -10,12 +10,12 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #f2f2f2;
-`;
+`
 
-export const Title = styled.h2``;
+export const Title = styled.h2``
 
 export const Subtitle = styled.h3`
   color: #666;
   font-weight: 400;
   margin-bottom: 20px;
-`;
+`

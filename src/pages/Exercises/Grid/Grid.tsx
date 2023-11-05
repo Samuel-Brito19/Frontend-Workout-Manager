@@ -1,9 +1,8 @@
 import * as Styled from './style'
-//import { FaTrash, FaEdit} from 'react-icons/fa'
+// import { FaTrash, FaEdit} from 'react-icons/fa'
 
 const Grid = () => {
-
-    return(
+  return (
         <Styled.Table>
             <Styled.Thead>
                 <Styled.Tr></Styled.Tr>
@@ -15,7 +14,7 @@ const Grid = () => {
                 <Styled.Tr></Styled.Tr>
             </Styled.Thead>
         </Styled.Table>
-    )
+  )
 }
 
 export default Grid

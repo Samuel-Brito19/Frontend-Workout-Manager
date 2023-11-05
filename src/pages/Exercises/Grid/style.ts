@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Table = styled.table`
   width: 100%;
@@ -9,16 +9,16 @@ export const Table = styled.table`
   max-width: 1120px;
   margin: 20px auto;
   word-break: break-all;
-`;
+`
 
-export const Thead = styled.thead``;
+export const Thead = styled.thead``
 
-export const Tbody = styled.tbody``;
+export const Tbody = styled.tbody``
 
-export const Tr = styled.tr``;
+export const Tr = styled.tr``
 
 export const Th = styled.th`
   text-align: start;
   border-bottom: inset;
   padding-bottom: 5px;
-`;
+`

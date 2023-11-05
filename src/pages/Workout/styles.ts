@@ -1,5 +1,5 @@
-//import { Link } from "react-router-dom";
-import styled from "styled-components";
+// import { Link } from "react-router-dom";
+import styled from 'styled-components'
 
 // export const Container = styled.div`
 //   display: flex;
@@ -24,14 +24,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-`;
+`
 
 export const Title = styled.h2`
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
-`;
-
+`
 
 // export const Line = styled.div`
 //   //padding-top: 15px;

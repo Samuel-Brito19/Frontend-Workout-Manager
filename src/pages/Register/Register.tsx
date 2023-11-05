@@ -5,54 +5,50 @@ import api from '../../services/api'
 import { AxiosError } from 'axios'
 
 const Register = () => {
+  const [inputs, setInputs] = useState({
+    name: '',
+    email: '',
+    password: '',
+    passwordConf: ''
+  })
 
-    const [inputs, setInputs] = useState({
-        name: '',
-        email: '',
-        password: '',
-        passwordConf: ''
-    })
-    
-    //const [passwordConf, setPasswordConf] = useState("")
+  // const [passwordConf, setPasswordConf] = useState("")
 
+  const navigate = useNavigate()
 
-    const navigate = useNavigate()
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
-    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setInputs(prev => ({...prev, [e.target.name]: e.target.value}))
+  const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    try {
+      await api.post('/users', inputs)
+      console.log(inputs)
+
+      if (inputs.password !== inputs.passwordConf) {
+        alert('Password does not match!!')
+        setInputs(
+          {
+            name: '',
+            email: '',
+            password: '',
+            passwordConf: ''
+          })
+
+        return
+      }
+
+      navigate('/')
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data.error)
+      }
     }
+  }
 
-
-    const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        try {
-            await api.post('/users', inputs)
-            console.log(inputs)
-            
-            if(inputs.password !== inputs.passwordConf) {
-                alert('Password does not match!!')
-                setInputs(
-                    {name: '',
-                    email: '',
-                    password: '',
-                    passwordConf: ''})
-                
-                return
-            }
-            
-            navigate("/")
-
-
-        } catch (error) {
-            if (error instanceof AxiosError) {
-                alert(error.response?.data.error);
-                return;}
-            }
-        }
-    
-
-    console.log(inputs)
-    return (
+  console.log(inputs)
+  return (
         <Styled.Container>
         <h2>Register</h2>
         <Styled.Form>
@@ -63,9 +59,9 @@ const Register = () => {
             <Styled.Button onClick={handleSubmit}>REGISTER</Styled.Button>
             <Styled.Span>Already have an account? <Link to="/">Login</Link></Styled.Span>
         </Styled.Form>
-        
+
     </Styled.Container>
-    )
+  )
 }
 
 export default Register

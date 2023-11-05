@@ -1,10 +1,9 @@
-//import { useRef } from 'react'
+// import { useRef } from 'react'
 import * as Styled from './styles'
 
 const Form = () => {
-
-    //const ref = useRef()
-    return(
+  // const ref = useRef()
+  return (
 
         <Styled.FormContainer>
             <Styled.InputArea>
@@ -22,7 +21,7 @@ const Form = () => {
 
             <Styled.Button type='submit'>SAVE</Styled.Button>
         </Styled.FormContainer>
-    )
+  )
 }
 
 export default Form

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const FormContainer = styled.form`
   display: flex;
@@ -9,12 +9,12 @@ export const FormContainer = styled.form`
   padding: 20px;
   box-shadow: 0px 0px 5px #ccc;
   border-radius: 5px;
-`;
+`
 
 export const InputArea = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
 
 export const Input = styled.input`
   width: 120px;
@@ -22,9 +22,9 @@ export const Input = styled.input`
   border: 1px solid #bbb;
   border-radius: 5px;
   height: 40px;
-`;
+`
 
-export const Label = styled.label``;
+export const Label = styled.label``
 
 export const Button = styled.button`
   padding: 10px;
@@ -34,4 +34,4 @@ export const Button = styled.button`
   background-color: #2c73d2;
   color: white;
   height: 42px;
-`;
+`

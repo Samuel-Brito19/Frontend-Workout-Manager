@@ -1,7 +1,7 @@
 import * as Styled from './styles'
 
 const GridWorkout = () => {
-    return (
+  return (
         <Styled.Table>
             <Styled.Thead>
                 <Styled.Tr>
@@ -9,7 +9,7 @@ const GridWorkout = () => {
                 </Styled.Tr>
             </Styled.Thead>
         </Styled.Table>
-    )
+  )
 }
 
 export default GridWorkout
