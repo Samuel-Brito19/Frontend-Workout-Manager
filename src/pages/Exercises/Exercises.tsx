@@ -2,7 +2,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.css";
 import * as Styled from "./styles";
 import GlobalStyle from "../../styles/global";
-import Form from "./Form/Form";
+import Form from "./Form/FormExercises";
 import Grid from "./Grid/Grid";
 import { useParams } from "react-router-dom";
 

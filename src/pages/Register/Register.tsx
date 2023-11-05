@@ -60,7 +60,6 @@ const Register = () => {
             <Styled.Input required type='email' placeholder='Enter email' name='email' value={inputs.email} onChange={handleChange}/>
             <Styled.Input required type='password' placeholder='Enter password' name='password' value={inputs.password} onChange={handleChange}/>
             <Styled.Input required type='password' placeholder='Confirm password' name='passwordConf' value={inputs.passwordConf} onChange={handleChange}/>
-            <Styled.LabelError></Styled.LabelError>
             <Styled.Button onClick={handleSubmit}>REGISTER</Styled.Button>
             <Styled.Span>Already have an account? <Link to="/">Login</Link></Styled.Span>
         </Styled.Form>

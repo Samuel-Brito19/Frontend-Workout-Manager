@@ -42,8 +42,3 @@ export const Span = styled.span`
 font-size: 15px;
 text-align: center;
 `
-
-export const LabelError = styled.label`
-font-size: 14px;
-color: red;
-`
