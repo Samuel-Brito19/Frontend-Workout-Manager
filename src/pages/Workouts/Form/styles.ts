@@ -17,7 +17,7 @@ flex-direction: column;
 `
 
 export const Input = styled.input`
-width: 350px;
+width: 300px;
 padding: 0 10px;
 border: 1px solid #bbb;
 border-radius: 5px;

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { type Workout } from '../../types/common'
+import { Button, FormContainer, Input, InputArea } from './Form/styles'
 
 const Workouts = () => {
   const navigate = useNavigate()
@@ -42,7 +43,12 @@ const Workouts = () => {
     <>
       <Styled.Container>
         <Styled.Title>Workouts</Styled.Title>
-
+        <FormContainer>
+        <InputArea>
+          <Input></Input>
+          </InputArea>
+          <Button>Save</Button>
+        </FormContainer>
         {workouts.map((workout) => (
           <div key={workout.id}>
             <h3>{workout.title}</h3>

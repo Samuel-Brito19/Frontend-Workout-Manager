@@ -52,8 +52,8 @@ const Register = () => {
         <Styled.Container>
         <h2>Register</h2>
         <Styled.Form>
-            <Styled.Input required type='text' placeholder='Username' name='name' value={inputs.name} onChange={handleChange}/>
-            <Styled.Input required type='email' placeholder='Enter email' name='email' value={inputs.email} onChange={handleChange}/>
+            <Styled.Input required type='text' placeholder='Username' name='name' onChange={handleChange}/>
+            <Styled.Input required type='email' placeholder='Enter email' name='email' onChange={handleChange}/>
             <Styled.Input required type='password' placeholder='Enter password' name='password' value={inputs.password} onChange={handleChange}/>
             <Styled.Input required type='password' placeholder='Confirm password' name='passwordConf' value={inputs.passwordConf} onChange={handleChange}/>
             <Styled.Button onClick={handleSubmit}>REGISTER</Styled.Button>
