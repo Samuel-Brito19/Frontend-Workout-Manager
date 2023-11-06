@@ -8,6 +8,7 @@ import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { type Workout } from '../../types/common'
 import { Button, FormContainer, Input, InputArea } from './Form/styles'
+import { FaTrash, FaEdit } from 'react-icons/fa';
 
 const Workouts = () => {
   const navigate = useNavigate()
@@ -50,10 +51,16 @@ const Workouts = () => {
           <Button>Save</Button>
         </FormContainer>
         {workouts.map((workout) => (
-          <div key={workout.id}>
-            <h3>{workout.title}</h3>
-            <p>Example</p>
-          </div>
+          <Styled.Table key={workout.id}>
+            <Styled.WorkoutTitle to={'/workouts/:workoutId/exercises'}>{workout.title}</Styled.WorkoutTitle>
+            <Styled.Td>
+              <FaEdit/>
+            </Styled.Td>
+            <Styled.Td>
+              <FaTrash/>
+            </Styled.Td>
+          </Styled.Table>
+
         ))}
       </Styled.Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT}/>

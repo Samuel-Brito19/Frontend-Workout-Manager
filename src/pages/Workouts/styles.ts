@@ -1,8 +1,8 @@
-// import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 // export const Container = styled.div`
-//   display: flex;
+//
 //   gap: 10px;
 //   height: 60px;
 //   background-color: #fff;
@@ -13,7 +13,7 @@ import styled from 'styled-components'
 //   width: 400px;
 //   margin-left: auto;
 //   align-items: center;
-//   justify-content: space-between;
+//
 // `;
 
 export const Container = styled.div`
@@ -46,15 +46,29 @@ export const Title = styled.h2`
 // `;
 // export const DivContainer = styled.div``;
 
-// export const WorkoutTitle = styled(Link)`
-//   flex: 1;
-//   height: 100%;
-//   text-decoration: none;
-//   color: #000;
-//   display: flex;
-//   align-items: center;
+export const WorkoutTitle = styled(Link)`
+  flex: 1;
+  height: 100%;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
 
-//   &:hover {
-//     color: #2c73d2;
-//   }
-// `;
+  &:hover {
+    color: #2c73d2;
+  }
+`;
+
+export const Table = styled.table`
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 5px #ccc;
+  border-radius: 5px;
+  max-width: 1120px;
+  margin:10px auto;
+  //word-break: break-all;
+`;
+
+export const Td = styled.td`
+`
