@@ -8,7 +8,7 @@ import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { type Workout } from '../../types/common'
 import { Button, FormContainer, Input, InputArea } from './Form/styles'
-import { FaTrash, FaEdit } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
 
 const Workouts = () => {
   const navigate = useNavigate()
@@ -53,9 +53,6 @@ const Workouts = () => {
         {workouts.map((workout) => (
           <Styled.Table key={workout.id}>
             <Styled.WorkoutTitle to={'/workouts/:workoutId/exercises'}>{workout.title}</Styled.WorkoutTitle>
-            <Styled.Td>
-              <FaEdit/>
-            </Styled.Td>
             <Styled.Td>
               <FaTrash/>
             </Styled.Td>
