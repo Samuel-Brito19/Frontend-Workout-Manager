@@ -33,7 +33,3 @@ export const Button = styled.button`
   color: white;
   height: 42px;
 `
-
-export const Label = styled.label`
-padding-bottom: 10px;
-`

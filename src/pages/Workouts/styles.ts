@@ -62,13 +62,19 @@ export const WorkoutTitle = styled(Link)`
 export const Table = styled.table`
   width: 100%;
   background-color: #fff;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0px 0px 5px #ccc;
   border-radius: 5px;
   max-width: 1120px;
-  margin:10px auto;
+  //margin:10px auto;
   //word-break: break-all;
 `;
 
-export const Td = styled.td`
+export const Div = styled.div`
+display: flex;
+justify-content: flex-end;
+flex: 1;
+align-items: center;
+float: 1;
+position: relative;
 `
