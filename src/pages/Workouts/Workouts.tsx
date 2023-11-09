@@ -62,6 +62,21 @@ const Workouts = () => {
     }
   }
 
+  const handleDelete = async (id: number) => {
+    try {
+      await api
+        .delete(`/users/workouts/${id}`)
+        .then(() => {
+          const newArray = workouts.filter((workout) => workout.id !== id)
+          setWorkouts(newArray)
+        })
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data.error)
+      }
+    }
+  }
+
   return (
     <>
       <Styled.Container >
@@ -76,7 +91,7 @@ const Workouts = () => {
           <Styled.Table key={workout.id}>
             <Styled.WorkoutTitle to={`/workouts/${workout.id}/exercises`}>{workout.title}</Styled.WorkoutTitle>
             <Styled.Div>
-              <FaTrash/>
+              <FaTrash onClick={async () => { await handleDelete(workout.id); }} />
             </Styled.Div>
           </Styled.Table>
 
@@ -87,4 +102,5 @@ const Workouts = () => {
     </>
   )
 }
+
 export default Workouts

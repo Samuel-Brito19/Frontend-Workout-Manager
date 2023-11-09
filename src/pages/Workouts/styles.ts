@@ -77,4 +77,5 @@ flex: 1;
 align-items: center;
 float: 1;
 position: relative;
+cursor: pointer;
 `
