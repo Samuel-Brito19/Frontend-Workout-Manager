@@ -25,7 +25,7 @@ const Workouts = () => {
     }
 
     try {
-      const response = await api.get(`/users/${user.id}/workouts`)
+      const response = await api.get('/users/workouts')
       setWorkouts(response.data)
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -44,10 +44,17 @@ const Workouts = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     try {
-      const user = getUser()
-      await api.post(`/users/${user?.id}/workouts`, {
+      // const user = getUser()
+      const Request = await api.post<Workout>('/users/workouts', {
         title: workout
       })
+      const insertedWorkout = Request.data
+
+      if (Request.status === 201) {
+        setWorkouts((prevState) => [...prevState, insertedWorkout])
+      }
+
+      setWorkout('')
     } catch (error) {
       if (error instanceof AxiosError) {
         alert(error.response?.data.error)
@@ -67,7 +74,7 @@ const Workouts = () => {
         </FormContainer>
         {workouts.map((workout) => (
           <Styled.Table key={workout.id}>
-            <Styled.WorkoutTitle to={'/workouts/:workoutId/exercises'}>{workout.title}</Styled.WorkoutTitle>
+            <Styled.WorkoutTitle to={`/workouts/${workout.id}/exercises`}>{workout.title}</Styled.WorkoutTitle>
             <Styled.Div>
               <FaTrash/>
             </Styled.Div>
