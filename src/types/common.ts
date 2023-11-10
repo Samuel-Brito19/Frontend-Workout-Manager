@@ -12,7 +12,7 @@ export interface Workout {
 export interface ExercisesTypes {
   id: number
   name: string
-  series: number
+  sets: number
   repetitions: number
   workoutId: number
 }

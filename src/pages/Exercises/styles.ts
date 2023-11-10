@@ -77,3 +77,7 @@ export const Th = styled.th`
   border-bottom: inset;
   padding-bottom: 5px;
 `
+export const Td = styled.td`
+  padding-top: 15px;
+
+`;
