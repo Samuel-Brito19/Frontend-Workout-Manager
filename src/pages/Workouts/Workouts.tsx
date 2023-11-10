@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { type Workout } from '../../types/common'
-import { Button, FormContainer, Input, InputArea } from './Form/styles'
 import { FaTrash } from 'react-icons/fa';
 
 const Workouts = () => {
@@ -81,12 +80,12 @@ const Workouts = () => {
     <>
       <Styled.Container >
         <Styled.Title>Workouts</Styled.Title>
-        <FormContainer onSubmit={handleSubmit}>
-        <InputArea>
-          <Input name='workout' value={workout} onChange={(e) => { setWorkout(e.target.value) }}></Input>
-          </InputArea>
-          <Button type='submit'>Save</Button>
-        </FormContainer>
+        <Styled.FormContainer onSubmit={handleSubmit}>
+        <Styled.InputArea>
+          <Styled.Input name='workout' value={workout} onChange={(e) => { setWorkout(e.target.value) }}></Styled.Input>
+          </Styled.InputArea>
+          <Styled.Button type='submit'>Save</Styled.Button>
+        </Styled.FormContainer>
         {workouts.map((workout) => (
           <Styled.Table key={workout.id}>
             <Styled.WorkoutTitle to={`/workouts/${workout.id}/exercises`}>{workout.title}</Styled.WorkoutTitle>

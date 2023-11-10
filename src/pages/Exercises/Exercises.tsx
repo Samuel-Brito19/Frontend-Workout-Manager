@@ -27,9 +27,9 @@ const Exercises = () => {
                 <Styled.Label>Repetitons</Styled.Label>
                 <Styled.Input name='repetitions' />
             </Styled.InputArea>
-
             <Styled.Button type='submit'>SAVE</Styled.Button>
         </Styled.FormContainer>
+
         <Styled.Table>
             <Styled.Thead>
                 <Styled.Tr></Styled.Tr>
