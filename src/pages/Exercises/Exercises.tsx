@@ -39,6 +39,8 @@ const Exercises = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
 
+    if (name === '' || sets === 0 || repetitions === 0) return
+
     try {
       const Req = await api.post<ExercisesTypes>('/exercises', {
         name,
@@ -56,6 +58,21 @@ const Exercises = () => {
       setName('')
       setRepetitons(0)
       setSets(0)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data.error)
+      }
+    }
+  }
+
+  const handleDelete = async (id: number) => {
+    try {
+      await api
+        .delete(`/exercises/${id}`)
+        .then(() => {
+          const newArray = workoutExercises.filter((exercise) => exercise.id !== id)
+          setWorkoutExercises(newArray)
+        })
     } catch (error) {
       if (error instanceof AxiosError) {
         alert(error.response?.data.error)
@@ -100,7 +117,11 @@ const Exercises = () => {
                   <Styled.Td>{exercise.name}</Styled.Td>
                   <Styled.Td>{exercise.sets}</Styled.Td>
                   <Styled.Td>{exercise.repetitions}</Styled.Td>
-                  <Styled.Td><FaTrash/></Styled.Td>
+                  <Styled.Td>
+                  <Styled.TrashButton><FaTrash onClick={async () => { await handleDelete(exercise.id); }}/>
+                  </Styled.TrashButton>
+
+                  </Styled.Td>
                 </Styled.Tr>
               ))}
             </Styled.Tbody>

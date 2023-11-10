@@ -81,3 +81,9 @@ export const Td = styled.td`
   padding-top: 15px;
 
 `;
+
+export const TrashButton = styled.button`
+cursor: pointer;
+border: none;
+background-color: transparent;
+`
