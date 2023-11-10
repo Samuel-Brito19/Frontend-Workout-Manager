@@ -4,9 +4,34 @@ import * as Styled from './styles'
 import GlobalStyle from '../../styles/global'
 
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import api from '../../services/api'
+import { AxiosError } from 'axios'
+import { type ExercisesTypes } from '../../types/common'
 
 const Exercises = () => {
   const params = useParams()
+
+  const [workoutExercises, setWorkoutExercises] = useState<ExercisesTypes[]>([])
+  const [exercise, setExercise] = useState('')
+
+  const getExercises = async () => {
+    try {
+      const response = await api.get(`/exercises/${params.workoutId}`)
+      setWorkoutExercises(response.data)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data.error)
+        return
+      }
+
+      alert('Something went wrong, please try again.')
+    }
+  }
+
+  useEffect(() => {
+    getExercises()
+  }, [])
 
   return (
     <>
