@@ -8,3 +8,11 @@ export interface Workout {
   title: string
   userId: number
 }
+
+export interface ExercisesTypes {
+  id: number
+  name: string
+  sets: number
+  repetitions: number
+  workoutId: number
+}

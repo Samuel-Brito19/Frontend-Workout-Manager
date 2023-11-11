@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { type Workout } from '../../types/common'
-import { Button, FormContainer, Input, InputArea } from './Form/styles'
 import { FaTrash } from 'react-icons/fa';
 
 const Workouts = () => {
   const navigate = useNavigate()
 
   const [workouts, setWorkouts] = useState<Workout[]>([])
+  const [workout, setWorkout] = useState('')
 
   const getWorkouts = async () => {
     const user = getUser()
@@ -24,7 +24,7 @@ const Workouts = () => {
     }
 
     try {
-      const response = await api.get(`/users/${user.id}/workouts`)
+      const response = await api.get('/users/workouts')
       setWorkouts(response.data)
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -40,22 +40,58 @@ const Workouts = () => {
     getWorkouts()
   }, [])
 
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault()
+    try {
+      // const user = getUser()
+      const Request = await api.post<Workout>('/users/workouts', {
+        title: workout
+      })
+      const insertedWorkout = Request.data
+
+      if (Request.status === 201) {
+        setWorkouts((prevState) => [...prevState, insertedWorkout])
+      }
+
+      setWorkout('')
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data.error)
+      }
+    }
+  }
+
+  const handleDelete = async (id: number) => {
+    try {
+      await api
+        .delete(`/users/workouts/${id}`)
+        .then(() => {
+          const newArray = workouts.filter((workout) => workout.id !== id)
+          setWorkouts(newArray)
+        })
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data.error)
+      }
+    }
+  }
+
   return (
     <>
-      <Styled.Container>
+      <Styled.Container >
         <Styled.Title>Workouts</Styled.Title>
-        <FormContainer>
-        <InputArea>
-          <Input></Input>
-          </InputArea>
-          <Button>Save</Button>
-        </FormContainer>
+        <Styled.FormContainer onSubmit={handleSubmit}>
+        <Styled.InputArea>
+          <Styled.Input name='workout' value={workout} onChange={(e) => { setWorkout(e.target.value) }}></Styled.Input>
+          </Styled.InputArea>
+          <Styled.Button type='submit'>Save</Styled.Button>
+        </Styled.FormContainer>
         {workouts.map((workout) => (
           <Styled.Table key={workout.id}>
-            <Styled.WorkoutTitle to={'/workouts/:workoutId/exercises'}>{workout.title}</Styled.WorkoutTitle>
-            <Styled.Td>
-              <FaTrash/>
-            </Styled.Td>
+            <Styled.WorkoutTitle to={`/workouts/${workout.id}/exercises`}>{workout.title}</Styled.WorkoutTitle>
+            <Styled.Div>
+              <FaTrash onClick={async () => { await handleDelete(workout.id); }} />
+            </Styled.Div>
           </Styled.Table>
 
         ))}
