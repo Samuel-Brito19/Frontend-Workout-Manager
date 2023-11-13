@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { type Workout } from '../../types/common'
-import { FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const Workouts = () => {
   const navigate = useNavigate()
@@ -89,9 +89,13 @@ const Workouts = () => {
         {workouts.map((workout) => (
           <Styled.Table key={workout.id}>
             <Styled.WorkoutTitle to={`/workouts/${workout.id}/exercises`}>{workout.title}</Styled.WorkoutTitle>
-            <Styled.Div>
+
+            <Styled.Tr>
+              <Styled.Div>
               <FaTrash onClick={async () => { await handleDelete(workout.id); }} />
-            </Styled.Div>
+              <FaEdit />
+              </Styled.Div>
+            </Styled.Tr>
           </Styled.Table>
 
         ))}

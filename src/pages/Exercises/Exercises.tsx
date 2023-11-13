@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { AxiosError } from 'axios'
 import { type ExercisesTypes } from '../../types/common'
-import { FaTrash } from 'react-icons/fa'
+import { FaEdit, FaTrash } from 'react-icons/fa'
 
 const Exercises = () => {
   const params = useParams()
@@ -109,6 +109,7 @@ const Exercises = () => {
                     <Styled.Th>Series</Styled.Th>
                     <Styled.Th>Repetitons</Styled.Th>
                     <Styled.Th></Styled.Th>
+                    <Styled.Th></Styled.Th>
                 <Styled.Tr></Styled.Tr>
             </Styled.Thead>
             <Styled.Tbody>
@@ -118,9 +119,13 @@ const Exercises = () => {
                   <Styled.Td>{exercise.sets}</Styled.Td>
                   <Styled.Td>{exercise.repetitions}</Styled.Td>
                   <Styled.Td>
-                  <Styled.TrashButton><FaTrash onClick={async () => { await handleDelete(exercise.id); }}/>
-                  </Styled.TrashButton>
+                  <Styled.TrashButton>
+                    <FaTrash onClick={async () => { await handleDelete(exercise.id); }}/>
 
+                  </Styled.TrashButton>
+                  <Styled.TrashButton>
+                  <FaEdit/>
+                  </Styled.TrashButton>
                   </Styled.Td>
                 </Styled.Tr>
               ))}

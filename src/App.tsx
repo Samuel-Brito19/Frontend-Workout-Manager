@@ -23,6 +23,10 @@ function App () {
     {
       path: '/workouts/:workoutId/exercises',
       element: <Exercises />
+    },
+    {
+      path: '/workout/edit/:workoutId',
+      element: <Exercises />
     }
   ])
 

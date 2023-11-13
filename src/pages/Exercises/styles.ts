@@ -86,4 +86,6 @@ export const TrashButton = styled.button`
 cursor: pointer;
 border: none;
 background-color: transparent;
+margin-left: 10px;
+
 `

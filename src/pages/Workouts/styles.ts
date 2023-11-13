@@ -1,20 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
-// export const Container = styled.div`
-//
-//   gap: 10px;
-//   height: 60px;
-//   background-color: #fff;
-//   padding: 0 20px;
-//   margin-top: 30px;
-//   box-shadow: 0px 0px 5px #ccc;
-//   border-radius: 5px;
-//   width: 400px;
-//   margin-left: auto;
-//   align-items: center;
-//
-// `;
+interface InputProps {
+  isEdit: boolean
+}
 
 export const Container = styled.div`
   width: 100%;
@@ -31,20 +20,6 @@ export const Title = styled.h2`
   justify-content: center;
   margin-bottom: 30px;
 `
-
-// export const Line = styled.div`
-//   //padding-top: 15px;
-//   display: block;
-//   text-align: start;
-//   align-items: center;
-//   position: relative;
-//   float: right;
-//   //padding-left: 300px;
-//   cursor: pointer;
-//   content: "";
-//   padding-left: 10px;
-// `;
-// export const DivContainer = styled.div``;
 
 export const WorkoutTitle = styled(Link)`
   flex: 1;
@@ -78,7 +53,9 @@ align-items: center;
 float: 1;
 position: relative;
 cursor: pointer;
+gap: 20px;
 `
+
 export const FormContainer = styled.form`
 display: flex;
 align-items: flex-end;
@@ -113,4 +90,13 @@ export const Button = styled.button`
   height: 42px;
 `
 
-;
+export const Tr = styled.tr``
+
+export const Td = styled.td`
+  padding-top: 15px;
+
+`
+export const InputTitle = styled.input<InputProps>`
+display: ${p => p.isEdit ? 'block' : 'none'};
+
+`
