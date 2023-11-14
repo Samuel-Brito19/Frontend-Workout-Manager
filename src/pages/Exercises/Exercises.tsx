@@ -50,7 +50,12 @@ const Exercises = () => {
         repetitions: Number(exercise.repetitions),
         workoutId: Number(exercise.workoutId)
       })
-      const index = workoutExercises.findIndex(ex => ex.id === exercise.id)
+      setWorkoutExercises((prevExercises) => {
+        // Replace the existing exercise with the updated one in the state
+        return prevExercises.map((ex) => (ex.id === exercise.id ? exercise : ex));
+      });
+
+      resetExerciseState()
       return
     }
 
