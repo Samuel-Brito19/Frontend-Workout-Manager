@@ -16,3 +16,11 @@ export interface ExercisesTypes {
   repetitions: number
   workoutId: number
 }
+
+export const initialExerciseState: ExercisesTypes = {
+  id: 0,
+  name: '',
+  repetitions: 0,
+  sets: 0,
+  workoutId: 0
+};

@@ -7,16 +7,18 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { AxiosError } from 'axios'
-import { type ExercisesTypes } from '../../types/common'
-import { FaTrash } from 'react-icons/fa'
+import { initialExerciseState, type ExercisesTypes } from '../../types/common'
+import { FaEdit, FaTrash } from 'react-icons/fa'
 
 const Exercises = () => {
   const params = useParams()
 
   const [workoutExercises, setWorkoutExercises] = useState<ExercisesTypes[]>([])
-  const [name, setName] = useState('')
-  const [sets, setSets] = useState(0)
-  const [repetitions, setRepetitons] = useState(0)
+  const [exercise, setExercise] = useState<ExercisesTypes>(initialExerciseState)
+
+  const resetExerciseState = () => {
+    setExercise(initialExerciseState);
+  };
 
   const getExercises = async () => {
     try {
@@ -39,13 +41,29 @@ const Exercises = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
 
-    if (name === '' || sets === 0 || repetitions === 0) return
+    if (exercise?.name === '' || exercise?.sets === 0 || exercise?.repetitions === 0) return
+
+    if (exercise.id != null) {
+      await api.put(`/exercises/${exercise?.id}`, {
+        name: exercise.name,
+        sets: Number(exercise.sets),
+        repetitions: Number(exercise.repetitions),
+        workoutId: Number(exercise.workoutId)
+      })
+      setWorkoutExercises((prevExercises) => {
+        // Replace the existing exercise with the updated one in the state
+        return prevExercises.map((ex) => (ex.id === exercise.id ? exercise : ex));
+      });
+
+      resetExerciseState()
+      return
+    }
 
     try {
       const Req = await api.post<ExercisesTypes>('/exercises', {
-        name,
-        sets,
-        repetitions,
+        name: exercise.name,
+        sets: Number(exercise.sets),
+        repetitions: Number(exercise.repetitions),
         workoutId: Number(params.workoutId)
       })
 
@@ -55,13 +73,18 @@ const Exercises = () => {
         setWorkoutExercises((prevState) => [...prevState, insertedExercise])
       }
 
-      setName('')
-      setRepetitons(0)
-      setSets(0)
+      resetExerciseState()
     } catch (error) {
       if (error instanceof AxiosError) {
         alert(error.response?.data.error)
       }
+    }
+  }
+
+  const handleEdit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (exercise != null) {
+      setExercise({ ...exercise, [name]: value })
     }
   }
 
@@ -89,15 +112,15 @@ const Exercises = () => {
         <Styled.FormContainer onSubmit={handleSubmit}>
             <Styled.InputArea>
                 <Styled.Label>Name</Styled.Label>
-                <Styled.Input name='name' value={name} onChange={(e) => { setName(e.target.value) }}/>
+                <Styled.Input name='name' value={exercise?.name} onChange={handleEdit}/>
             </Styled.InputArea>
             <Styled.InputArea>
                 <Styled.Label>Sets</Styled.Label>
-                <Styled.Input name='sets' value={sets} onChange={(e) => { setSets(parseInt(e.target.value)) }}/>
+                <Styled.Input name='sets' value={exercise?.sets} onChange={handleEdit}/>
             </Styled.InputArea>
             <Styled.InputArea>
                 <Styled.Label>Repetitons</Styled.Label>
-                <Styled.Input name='repetitions' value={repetitions} onChange={(e) => { setRepetitons(parseInt(e.target.value)) }}/>
+                <Styled.Input name='repetitions' value={exercise?.repetitions} onChange={handleEdit}/>
             </Styled.InputArea>
             <Styled.Button type='submit'>SAVE</Styled.Button>
         </Styled.FormContainer>
@@ -109,6 +132,7 @@ const Exercises = () => {
                     <Styled.Th>Series</Styled.Th>
                     <Styled.Th>Repetitons</Styled.Th>
                     <Styled.Th></Styled.Th>
+                    <Styled.Th></Styled.Th>
                 <Styled.Tr></Styled.Tr>
             </Styled.Thead>
             <Styled.Tbody>
@@ -118,9 +142,13 @@ const Exercises = () => {
                   <Styled.Td>{exercise.sets}</Styled.Td>
                   <Styled.Td>{exercise.repetitions}</Styled.Td>
                   <Styled.Td>
-                  <Styled.TrashButton><FaTrash onClick={async () => { await handleDelete(exercise.id); }}/>
-                  </Styled.TrashButton>
+                  <Styled.TrashButton>
+                    <FaTrash onClick={async () => { await handleDelete(exercise.id); }}/>
 
+                  </Styled.TrashButton>
+                  <Styled.TrashButton>
+                  <FaEdit onClick={() => { setExercise(exercise); }}/>
+                  </Styled.TrashButton>
                   </Styled.Td>
                 </Styled.Tr>
               ))}
