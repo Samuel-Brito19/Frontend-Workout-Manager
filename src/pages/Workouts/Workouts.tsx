@@ -6,17 +6,18 @@ import { getUser } from '../../services/storage'
 import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
-import { type Workout } from '../../types/common'
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { type Workout } from '../../types/common'
 
 const Workouts = () => {
   const navigate = useNavigate()
-
+  const user = getUser()
   const [workouts, setWorkouts] = useState<Workout[]>([])
-  const [workout, setWorkout] = useState('')
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+  const [workout, setWorkout] = useState<Workout>()
+  const [title, setTitle] = useState<string>('')
 
   const getWorkouts = async () => {
-    const user = getUser()
     if (user === null) {
       alert('You must be logged in to access this page.')
       navigate('/')
@@ -38,26 +39,55 @@ const Workouts = () => {
 
   useEffect(() => {
     getWorkouts()
-  }, [])
+  }, [workouts])
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
+
     try {
-      // const user = getUser()
       const Request = await api.post<Workout>('/users/workouts', {
-        title: workout
+        title,
+        userId: user?.id
       })
       const insertedWorkout = Request.data
 
-      if (Request.status === 201) {
+      if (Request.status === 200) {
         setWorkouts((prevState) => [...prevState, insertedWorkout])
+        setTitle('')
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        setWorkout(undefined)
       }
-
-      setWorkout('')
     } catch (error) {
       if (error instanceof AxiosError) {
         alert(error.response?.data.error)
       }
+    }
+  }
+
+  const handleUpdate = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    try {
+      const req = await api.put(`/users/workouts/${workout?.id}`, {
+        title: workout?.title
+      })
+
+      if (req.status === 200) {
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        setWorkout(undefined)
+        setTitle('')
+      }
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data.error)
+      }
+    }
+  }
+
+  const handleSetTitle = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    if (workout?.title != null) {
+      setWorkout({ ...workout, title: e.currentTarget.value })
+    } else {
+      setTitle(e.currentTarget.value)
     }
   }
 
@@ -80,23 +110,20 @@ const Workouts = () => {
     <>
       <Styled.Container >
         <Styled.Title>Workouts</Styled.Title>
-        <Styled.FormContainer onSubmit={handleSubmit}>
+        <Styled.FormContainer onSubmit={async (e: any) => { ((workout?.id) != null) ? await handleUpdate(e) : handleSubmit(e) }}>
         <Styled.InputArea>
-          <Styled.Input name='workout' value={workout} onChange={(e) => { setWorkout(e.target.value) }}></Styled.Input>
+          <Styled.Input name='title' value={workout?.title} onChange={handleSetTitle}></Styled.Input>
           </Styled.InputArea>
+
           <Styled.Button type='submit'>Save</Styled.Button>
         </Styled.FormContainer>
         {workouts.map((workout) => (
           <Styled.Table key={workout.id}>
             <Styled.WorkoutTitle to={`/workouts/${workout.id}/exercises`}>{workout.title}</Styled.WorkoutTitle>
-
             <Styled.Tr>
               <Styled.Div>
               <FaTrash onClick={async () => { await handleDelete(workout.id); }} />
-              <Styled.WorkoutEdit to={`/workout/edit/${workout.id}`}>
-              <FaEdit />
-              </Styled.WorkoutEdit>
-
+              <FaEdit onClick={() => { setWorkout(workout); }}/>
               </Styled.Div>
             </Styled.Tr>
           </Styled.Table>
