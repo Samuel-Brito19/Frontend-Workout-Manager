@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
-interface InputProps {
-  isEdit: boolean
-}
-
 export const Container = styled.div`
   width: 100%;
   max-width: 800px;
@@ -33,6 +29,10 @@ export const WorkoutTitle = styled(Link)`
     color: #2c73d2;
   }
 `;
+
+export const WorkoutEdit = styled(Link)`
+
+`
 
 export const Table = styled.table`
   width: 100%;
@@ -96,7 +96,7 @@ export const Td = styled.td`
   padding-top: 15px;
 
 `
-export const InputTitle = styled.input<InputProps>`
-display: ${p => p.isEdit ? 'block' : 'none'};
+export const InputTitle = styled.input`
+
 
 `

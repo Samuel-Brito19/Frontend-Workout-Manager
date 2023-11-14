@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/Login/Login'
 import Workouts from './pages/Workouts/Workouts'
 import Exercises from './pages/Exercises/Exercises'
+import WorkoutEdit from './pages/Edits/WorkoutEdit'
 
 function App () {
   const router = createBrowserRouter([
@@ -25,8 +26,8 @@ function App () {
       element: <Exercises />
     },
     {
-      path: '/workout/edit/:workoutId',
-      element: <Exercises />
+      path: '/workout/edit/:id',
+      element: <WorkoutEdit />
     }
   ])
 

@@ -93,7 +93,10 @@ const Workouts = () => {
             <Styled.Tr>
               <Styled.Div>
               <FaTrash onClick={async () => { await handleDelete(workout.id); }} />
+              <Styled.WorkoutEdit to={`/workout/edit/${workout.id}`}>
               <FaEdit />
+              </Styled.WorkoutEdit>
+
               </Styled.Div>
             </Styled.Tr>
           </Styled.Table>
