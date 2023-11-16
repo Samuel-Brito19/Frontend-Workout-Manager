@@ -13,7 +13,6 @@ const Workouts = () => {
   const navigate = useNavigate()
   const user = getUser()
   const [workouts, setWorkouts] = useState<Workout[]>([])
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const [workout, setWorkout] = useState<Workout>()
   const [title, setTitle] = useState<string>('')
 
@@ -54,7 +53,6 @@ const Workouts = () => {
       if (Request.status === 200) {
         setWorkouts((prevState) => [...prevState, insertedWorkout])
         setTitle('')
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         setWorkout(undefined)
       }
     } catch (error) {
@@ -72,7 +70,6 @@ const Workouts = () => {
       })
 
       if (req.status === 200) {
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         setWorkout(undefined)
         setTitle('')
       }

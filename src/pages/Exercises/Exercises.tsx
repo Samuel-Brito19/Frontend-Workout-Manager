@@ -43,7 +43,7 @@ const Exercises = () => {
 
     if (exercise?.name === '' || exercise?.sets === 0 || exercise?.repetitions === 0) return
 
-    if (exercise.id != null) {
+    if (exercise.id !== 0) {
       await api.put(`/exercises/${exercise?.id}`, {
         name: exercise.name,
         sets: Number(exercise.sets),
