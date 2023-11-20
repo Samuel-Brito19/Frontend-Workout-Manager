@@ -83,6 +83,7 @@ const Workouts = () => {
   const handleSetTitle = (e: React.SyntheticEvent<HTMLInputElement>) => {
     if (workout?.title != null) {
       setWorkout({ ...workout, title: e.currentTarget.value })
+      setTitle(e.currentTarget.value)
     } else {
       setTitle(e.currentTarget.value)
     }
@@ -109,7 +110,7 @@ const Workouts = () => {
         <Styled.Title>Workouts</Styled.Title>
         <Styled.FormContainer onSubmit={async (e: any) => { ((workout?.id) != null) ? await handleUpdate(e) : handleSubmit(e) }}>
         <Styled.InputArea>
-          <Styled.Input name='title' value={workout?.title} onChange={handleSetTitle}></Styled.Input>
+          <Styled.Input name='title' value={title} onChange={handleSetTitle}></Styled.Input>
           </Styled.InputArea>
 
           <Styled.Button type='submit'>Save</Styled.Button>
@@ -120,7 +121,7 @@ const Workouts = () => {
             <Styled.Tr>
               <Styled.Div>
               <FaTrash onClick={async () => { await handleDelete(workout.id); }} />
-              <FaEdit onClick={() => { setWorkout(workout); }}/>
+              <FaEdit onClick={() => { setWorkout(workout); setTitle(workout.title) }}/>
               </Styled.Div>
             </Styled.Tr>
           </Styled.Table>
